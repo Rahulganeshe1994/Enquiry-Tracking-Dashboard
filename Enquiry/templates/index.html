@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{%for message in messages%}
+{%if message%}
+<script>
+    alert("{{message}}");
+</script>
+{%endif%}
+{%endfor%}
+
+{%block content%}
+<h1>Enter Student Details</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    Student Name<input type="text" name="sname" class="form-control" /><br>
+    Email<input type="email" name="email" class="form-control" /><br>
+    Mobile<input type="number" name="mob" class="form-control" /><br><br>
+    Branch<input type="text" name="branch" class="form-control" /><br>
+    Course<select name="course" class="form-control" >
+        {%for i in cr%}
+        <option value="{{i.id}}">{{i}}</option>
+        {%endfor%}
+    </select><br>
+    Status<select name="status" class="form-control">
+        <option>Enquiry</option>
+        <option>Joined</option>
+        <option>Placed</option>
+    </select><br>
+    Address<textarea name="address" class="form-control"></textarea><br>
+    Qualification<input type="text" name="qualification" class="form-control" /><br>
+    Sem<input type="text" name="sem" class="form-control" /><br>
+    Passout Year<input type="number" name="passout" class="form-control" /><br>
+    <button class="btn btn-primary">Add Student</button>
+</form>
+{%endblock%}

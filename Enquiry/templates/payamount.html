@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{%block content%}
+<h1>Enter Amount Details</h1>
+<script>  
+    var request;  
+    function sendInfo()  
+    {  
+    var v=document.getElementById('t1').value;
+    var url="showam?val="+v;  
+      
+    if(window.XMLHttpRequest){  
+    request=new XMLHttpRequest();  
+    }  
+    else if(window.ActiveXObject){  
+    request=new ActiveXObject("Microsoft.XMLHTTP");  
+    }  
+      
+    try  
+    {  
+    request.onreadystatechange=getInfo;  
+    request.open("GET",url,true);  
+    request.send();  
+    }  
+    catch(e)  
+    {  
+    alert("Unable to connect to server");  
+    }  
+    }  
+      
+    function getInfo(){  
+    if(request.readyState==4){  
+    var val=request.responseText;  
+    document.getElementById('dd').innerHTML=val;  
+    }  
+    }  
+      
+    </script>  
+    </head>  
+    <body>  
+        <form action="" method="POST">
+            {% csrf_token %}
+            <select name="student" id="t1" onchange="sendInfo()" >
+            {%for i in st%}
+                <option value={{i.id}}>{{i}}</option>
+            {%endfor%}
+            </select><br>
+            <div id="dd">
+
+            </div>
+            Submit amount<input type="number" name="submitamount" class="form-control" /><br>
+            Next PayDate<input type="date" name="nextpaydate" class="form-control" /><br><br>
+            <button class="btn btn-primary">Pay Now</button>
+        </form>
+        
+    
+    
+{%endblock%}

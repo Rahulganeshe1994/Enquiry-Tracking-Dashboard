@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{%block content%}
+<h1>All Course Details</h1>
+<table class="table table-bordered text-center table-hover bg-primary">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile Details</th>
+        <th>Branch</th>
+        <th>Courses</th>
+        <th>Status</th>
+        <th>Enquiry Date</th>
+        <th>Address</th>
+        <th>Qualification</th>
+        <th>Sem</th>
+        <th>Passout</th>
+        <th>Fees</th>
+    </tr>
+</thead>
+<tbody>
+    {%for i in st%}
+    <tr>
+        <td>{{i.sname}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.mob}}</td>
+        <td>{{i.branch}}</td>
+        <td>{{i.course}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.doe}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.qualification}}</td>
+        <td>{{i.sem}}</td>
+        <td>{{i.passout}}</td>
+        <td>{{i.course.fees}}</td>
+    </tr>
+    {%endfor%}
+</tbody>
+</table>
+{%endblock%}

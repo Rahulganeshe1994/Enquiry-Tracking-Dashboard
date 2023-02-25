@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%block content%}
+<h1>Enter Serach Details</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    Course<select name="course" class="form-control" >
+        {%for i in cr%}
+        <option value="{{i.id}}">{{i}}</option>
+        {%endfor%}
+    </select><br>
+    Status<select name="status" class="form-control">
+        <option>Enquiry</option>
+        <option>Joined</option>
+        <option>Placed</option>
+    </select><br>
+    Student Name<input type="text" name="sname" class="form-control" /><br>
+    From <input type="date" name="fdt" class="form-control" /><br><br>
+    To <input type="date" name="tdt" class="form-control" /><br><br>
+    <button class="btn btn-primary">Search</button>
+</form>
+{%endblock%}
